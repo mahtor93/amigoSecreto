@@ -5,9 +5,8 @@
 // presentar el elemento cuyo índice coincide con el número aleatorio.
 
 let arrAmigos = [];
-
+let total;
 function showTextInPlace(identifier, text) {
-    console.log(`Poniendo ${text} en la etiqueta ${identifier}`)
     let output = document.getElementById(identifier);
     output.innerHTML = text;
 }
@@ -20,6 +19,8 @@ function agregarAmigo() {
 
 function addFriendsToList(friend) {
     arrAmigos.push(friend);
+    showTextInPlace('resultado','');
+    total = arrAmigos.length;
 }
 
 function generateRandom(endValue) {
@@ -28,12 +29,12 @@ function generateRandom(endValue) {
 }
 
 function sortearAmigo() {
-    let total = arrAmigos.length;
-    if (arrAmigos != 0) {
+    if (total > 1) {
         let randomIndex = generateRandom(total);
         let randomFriend = arrAmigos[randomIndex];
-        console.log(randomFriend)
         showTextInPlace('resultado',randomFriend);
+    }else{
+        showTextInPlace('resultado','Debes añadir al menos a dos personas')
     }
 }
 
