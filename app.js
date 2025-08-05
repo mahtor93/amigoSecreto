@@ -11,16 +11,26 @@ function showTextInPlace(identifier, text) {
     output.innerHTML = text;
 }
 
+
 function agregarAmigo() {
     let userInput = document.getElementById('amigo');
     addFriendsToList(userInput.value);
     userInput.value = '';
 }
 
+function populateFriendViewList(){
+    let showedList = document.getElementById('listaAmigos');
+    showedList.innerHTML = '';
+    for(let i=0; i<arrAmigos.length;i++){
+        showedList.innerHTML += `<li>${arrAmigos[i]}</li>`
+    }
+}
+
 function addFriendsToList(friend) {
     arrAmigos.push(friend);
     showTextInPlace('resultado','');
     total = arrAmigos.length;
+    populateFriendViewList();
 }
 
 function generateRandom(endValue) {
